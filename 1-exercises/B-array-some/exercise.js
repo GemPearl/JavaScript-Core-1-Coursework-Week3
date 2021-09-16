@@ -12,13 +12,33 @@ var pairsByIndex = [[0, 3], [1, 2], [2, 1], null, [3, 0]];
 // https://nodejs.org/api/process.html#process_process_exit_code
 // process.exit(1);
 
+
 var students = ["Islam", "Lesley", "Harun", "Rukmini"];
 var mentors = ["Daniel", "Irina", "Mozafar", "Luke"];
 
-var pairs = pairsByIndex.map(function (indexes) {
+// var pairs = pairsByIndex.map(function (indexes) {
+//   var student = students[indexes[0]];
+//   var mentor = mentors[indexes[1]];
+//   return [student, mentor];
+// });
+
+function checkNullValue(pair){
+  if(pairsByIndex.some(null))process.exit(1);
+}
+
+var pairs = pairsByIndex.map(function(indexes){
   var student = students[indexes[0]];
   var mentor = mentors[indexes[1]];
-  return [student, mentor];
+  return [student,mentor];
 });
 
 console.log(pairs);
+
+import process from 'process';
+
+// How to properly set the exit code while letting
+// the process exit gracefully.
+if (someConditionNotMet()) {
+  printUsageToStdout();
+  process.exitCode = 1;
+}
