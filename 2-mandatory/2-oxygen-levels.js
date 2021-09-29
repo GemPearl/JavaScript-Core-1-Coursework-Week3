@@ -12,10 +12,16 @@
 */
 
 function findSafeOxygenLevel(arr) {
-  const safeOxygen = arr.filter(level=>level.include("%")).map(y => y.replace("%", ""));
-  return safeOxygen.find((x)=> x>23.5 && x > 19.5)
-}
+  const safeOxygen = arr.filter(level=>level.include("%")).find(level=>{
+    level = parseFloat(level.replace("%", ""));
+    const lowerlimit = 19.5;
+    const upperlimit = 23.5;
+    return lowerlimt < level && level < upperlimit;
+  });
 
+  return safeOxygen;
+  
+  
 /* ======= TESTS - DO NOT MODIFY ===== */
 
 test("findSafeOxygenLevel function works - case 1", () => {

@@ -14,7 +14,7 @@ Write a function that:
 */
 function sortArray(arr) {
   //let arr = [...arr];
-  return arr.sort();
+  return arr.slice().sort();// The slice is really important, the original array shouldn't be mutated, which sort does
 }
 
 /*
@@ -28,7 +28,7 @@ Write a function that:
 - Makes the strings all lowercase.
 */
 function tidyUpString(str) {
-  return str.map(x=> x.split("/").joint("").trim().toLowerCase());
+  return str.map(x=> x.trim().replace("/").toLowerCase());
 }
 
 /*
